@@ -1,0 +1,78 @@
+```
+
+Account ---------------- User
+account_id               user_id
+email                    first name
+password                 last name
+                         birthday
+                         gentle
+                         code `xxxx-xxxx-xxxx-xxxx-xxxx-xxxx`
+                         calname
+
+|
+|
+Login
+account_id
+
+---------------------------
+
+<cal code="xxxx-xxxx-xxxx-xxxx-xxxx-xxxx"> abcdef
+
+User
+user_id
+code `xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx`
+
+Login login = AuthenticationService.login();
+AuthenticationService.saveLoginToCookie(login);
+User user = AuthenticationService.getUserFromLogin(login);
+Login login = AuthenticationService.loadLoginFromCookie();
+if ....
+
+UserService.getUser()
+
+User user = account.getUser()
+User user = UserService.getUser(user_code);
+
+User
+    ...
+    Account
+    Logins
+```
+
+base mtr
+  - cpn group 1
+    - cpn 1
+    - cpn 2
+  - cpn group 2
+
+- kit 1
+-> cpn group 1
+- kit 2
+-> cpn group 2
+
+- puzzle 1
+  - pice 1
+  - pice 2
+  - pice 3
+  - pice 4
+
+Kit single
+
+kit.getData()
+ctx = kit.createPagiContext({
+    xxx: ....
+})
+pagi = kit.pagin(ctx)
+kit.pagi(ctx)
+<Haha data={kit.getData()} x={} y={} z={} lang={} onXXXX={}/>
+
+
+Realize - | Adap | - Interf
+
+Realize -> to Adap -> Interf
+
+Realize ->
+
+List
+Compa
+String

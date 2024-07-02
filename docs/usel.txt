@@ -1,0 +1,174 @@
+Usel
+
+Define
+    group
+        timestamp
+            - created_at datetime [default 'NOW()']
+            - updated_at datetime [default 'NOW()']
+
+        soft_delete
+            - deleted boolean [default false]
+            - deleted_at datetime [allow null]
+
+    type
+        account_status smallint
+            optional
+            values
+                - unactivated 1
+                - actived 2
+                - blocked 3
+
+        gender smallint
+            optional
+            values
+                - male 1
+                - female 2
+                - other 3
+
+Objects
+
+    Account
+        - email string [email format]
+        - password string
+        - status account_status
+
+    User
+        - username string [a-zA-Z0-9_]
+        - first_name string
+        - last_name string
+        - birthday date
+        - gender string
+        - code
+
+    Login
+        - refresh_token string
+        - request_ip string
+        - browser string
+
+Tables
+
+    accounts
+        - id bigint [primary key]
+        - email string [not null]
+        - password_digest string [not null]
+        - status smallint [default '1']
+        - user_id bigint [foreign key ref users.id | unique key]
+        - soft_delete
+        - timestamp
+
+    users
+        - id bigint [primary key]
+        - username string [not null | unique]
+        - first_name string [not null]
+        - last_name string [not null]
+        - birthday date [not null]
+        - gender smallint [not null]
+        - code string [not null | unique]
+        - timestamp
+
+    logins
+        - id bigint [primary key]
+        - refresh_token string [not null]
+        - request_ip string [not null]
+        - browser string [not null]
+        - account_id bigint [foreign key ref accounts.id]
+        - timestamp
+
+Enum
+    [Account]Status int8
+        - Unactivated 1
+        - Activated 2
+        - Blocked 3
+
+    Gender int8
+        - Male 1
+        - Female 2
+        - Other 3
+
+Domains
+    Account
+        - id int64
+        - email string
+        - password_digest string
+        - status Status
+        - user_id bigint
+        - deleted boolean
+        - deleted_at datetime
+        - created_at datetime
+        - updated_at datetime
+
+    User
+        - id bigint
+        - username string
+        - first_name string
+        - last_name string
+        - birthday date
+        - gender Gender
+        - code string
+        - created_at datetime
+        - updated_at datetime
+
+    Login
+        - id bigint
+        - refresh_token string
+        - request_ip string
+        - browser bigint
+        - account_id bigint
+        - created_at datetime
+        - updated_at datetime
+
+Repositories
+    Account
+        - get(id)
+        - list(offset = 0, limit = 0)
+        - search(filter, offset = 0, limit = 0)
+        - create(Account)
+        - update(Account)
+        - delete(id)
+    User
+        - get(id)
+        - list(offset = 0, limit = 0)
+        - search(filter, offset = 0, limit = 0)
+        - create(User)
+        - update(User)
+    Login
+        - get(id)
+        - list(offset = 0, limit = 0)
+        - search(filter, offset = 0, limit = 0)
+        - create(Login)
+        - update(Login)
+        - delete(id)
+
+Service
+    Authentication
+        - Login(email, password) Login
+        - Signup(Account, User) Login
+        - Authenticate(apiKey) Login
+        - Refresh(refreshToken) Login
+        - GetAccount(accessToken) Account
+        - GetUser(accessToken) User
+        - GetLogin(accessToken) Login
+        - ListLogins(accessToken, offset = 0, limit = 0) Login[]
+
+
+Flow
+    Authenticate
+                (1 - {email, password})
+    +--------+ --------> +------+ <--------------------------+
+    | Client |           | Usel |                            |
+    +--------+ <-------- +------+ -------------------------+ |
+    ^        |  (2 - {loginId, refreshToken, accessToken}) | |
+    |        |  (3 - {????, accessToken})                  | |
+    |        +----> +-----------+ <------------------------+ |
+    |               | ? Service |          (5 - code)        |
+    +-------------- +-----------+ ---------------------------+
+      (6 - ????)                           (4 - Authenticate(accessToken, apiKey))
+
+
+Steps
+    - client ----> Usel ? unknown client
+
+Expand
+    - client ----> usel ? unknown client
+
+
