@@ -164,11 +164,30 @@ Flow
     +-------------- +-----------+ ---------------------------+
       (6 - ????)                           (4 - Authenticate(accessToken, apiKey))
 
+User
+- Read Only
+- Origin
+Account
+- Read Only
+- Origin
+Login
+- Read Only
+- Origin
 
-Steps
-    - client ----> Usel ? unknown client
+[]
 
-Expand
-    - client ----> usel ? unknown client
+[]
+code
+permission
 
+SERVICE_KEY
+Internal
+External
 
+Request
+    Header
+    X-APP-ID: xxxx-xxxx-xxxx-xxxx
+
+    Body
+    username
+    password
