@@ -1,0 +1,38 @@
+Usel
+
+- User
+- Account
+- Login
+- Project
+
+User
+----------------------------------------
+    username
+    first_name
+    last_name
+    birthday
+    gender
+    country (personal) (ISO 3166-1 A-2)
+    language (personal) (ISO 639 Set1)
+    contact info (thinking)
+
+Account
+----------------------------------------
+    loginname
+    password
+    status
+    | login failed handle
+
+Project
+----------------------------------------
+    name
+    key
+    secret
+    permissions
+
+Login
+----------------------------------------
+    project_key
+    refresh_token
+    access_token
+

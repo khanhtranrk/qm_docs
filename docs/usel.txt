@@ -1,5 +1,34 @@
 Usel
 
+- User Info
+- Account
+
+- Login [log activity]
+    - Access Token (permission)
+    - Refresh Token (permission)
+
+- Project
+
+.................................................................
+
+------- Internal Permission
+Usel
+    Permission
+    info
+    payment
+
+------- External Permission
+Noval
+    Permission
+
+AccessToken(permission) - Key | useable | 
+
+app   external key | name | permissions | secret
+login refresh token | access token | key | ...
+
+access_token + serect
+user           service
+
 Define
     group
         timestamp
@@ -164,30 +193,6 @@ Flow
     +-------------- +-----------+ ---------------------------+
       (6 - ????)                           (4 - Authenticate(accessToken, apiKey))
 
-User
-- Read Only
-- Origin
-Account
-- Read Only
-- Origin
-Login
-- Read Only
-- Origin
-
-[]
-
-[]
-code
-permission
-
-SERVICE_KEY
-Internal
-External
-
-Request
-    Header
-    X-APP-ID: xxxx-xxxx-xxxx-xxxx
-
-    Body
-    username
-    password
+Access Token
+    code
+    permission
