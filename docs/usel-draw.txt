@@ -14,14 +14,37 @@ User
     gender
     country (personal) (ISO 3166-1 A-2)
     language (personal) (ISO 639 Set1)
-    contact info (thinking)
 
 Account
 ----------------------------------------
-    loginname
+    email
+    username
     password
     status
-    | login failed handle
+----------------------------------------
+(login name):__email or username___
+(passowrd)  :__passowrd____________
+----------------------------------------
+(email)     :__email_______________
+(username)  :__username____________
+(firstname) :__first_name__________
+(lastname)  :__last_name___________
+(gender)    :__gender______________
+(birthday)  :__birthday____________
+(country)   :__country_____________
+(password)  :__password____________
+(passwordcf):__passwordcf__________
+----------------------------------------
+Transaction
+    create user (....)
+    create account(...., user)
+Commit
+----------------------------------------
+
+
+username (unique | allow-nil)
+username
+----------------------------------------
 
 Project
 ----------------------------------------
@@ -36,3 +59,4 @@ Login
     refresh_token
     access_token
 
+Usel
